@@ -1,0 +1,510 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "hfe-variant-prevalence",
+  "description": "HFE rs1800562/rs1799945 population prevalence from cached Ensembl REST responses for the 1000 Genomes Project. Includes raw responses, BioCypher graph CSVs, and Croissant-readable prevalence tables. Subpopulation genotypes use Hardy-Weinberg estimates. Joint diplotypes assume independence and are not observed joint prevalence.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "version": "0.1.0",
+  "keywords": [
+    "HFE",
+    "1000 Genomes",
+    "population prevalence",
+    "BioCypher"
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ensembl_HFE_gene.json",
+      "name": "ensembl_HFE_gene.json",
+      "contentUrl": "data/ensembl_HFE_gene.json",
+      "encodingFormat": "application/json",
+      "sha256": "9976b4374703ae3bf1e0b7dfad284df4d48dcede9a4cdb5217a8ef2512877b78"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ensembl_rs1799945.json",
+      "name": "ensembl_rs1799945.json",
+      "contentUrl": "data/ensembl_rs1799945.json",
+      "encodingFormat": "application/json",
+      "sha256": "4f638163af2d18a480956c9b765147615e1b62a0e26d8a0a6ecdaa340cca0e3c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ensembl_rs1800562.json",
+      "name": "ensembl_rs1800562.json",
+      "contentUrl": "data/ensembl_rs1800562.json",
+      "encodingFormat": "application/json",
+      "sha256": "17e99e21a7d9ece1b4053ed1a1c5abbc751bd10465f5e29511e2b70f62204d3d"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/genotype_frequencies.csv",
+      "name": "genotype_frequencies.csv",
+      "contentUrl": "data/genotype_frequencies.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "5fed1dd5f7fff7bed19fa9fb001e25570398887dbbd1848a038bc6f1111164d6"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/variant_combinations.csv",
+      "name": "variant_combinations.csv",
+      "contentUrl": "data/variant_combinations.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "2b404790b854547964200b3ed9c0f3128fc185d43616625790fca9e22932b3fe"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/CombinationInPopulation-header.csv",
+      "name": "CombinationInPopulation-header.csv",
+      "contentUrl": "biocypher-out/CombinationInPopulation-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/CombinationInPopulation-part000.csv",
+      "name": "CombinationInPopulation-part000.csv",
+      "contentUrl": "biocypher-out/CombinationInPopulation-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "52455d41b400dc306c79bd34e11fa4c3a12382746d10c351e41504202c9e6238"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/CombinationInvolvesVariant-header.csv",
+      "name": "CombinationInvolvesVariant-header.csv",
+      "contentUrl": "biocypher-out/CombinationInvolvesVariant-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/CombinationInvolvesVariant-part000.csv",
+      "name": "CombinationInvolvesVariant-part000.csv",
+      "contentUrl": "biocypher-out/CombinationInvolvesVariant-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "b35ad64b14469aa493919295d71935bf4ce5f90fef53e3aceed841aef7fac2c6"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/Gene-header.csv",
+      "name": "Gene-header.csv",
+      "contentUrl": "biocypher-out/Gene-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "deaaabe090ffcbb47bc6765598770c83585023ce394ccc4fabec95d3e5b9da6d"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/Gene-part000.csv",
+      "name": "Gene-part000.csv",
+      "contentUrl": "biocypher-out/Gene-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "ea7a773c1d5cd819a4d712096ac009027d0837a8ceff9506e18f718a04584647"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/GeneHasVariant-header.csv",
+      "name": "GeneHasVariant-header.csv",
+      "contentUrl": "biocypher-out/GeneHasVariant-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/GeneHasVariant-part000.csv",
+      "name": "GeneHasVariant-part000.csv",
+      "contentUrl": "biocypher-out/GeneHasVariant-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "042018cb2c54ac0b706c075ba2efb804c87ada4add859aac59478fdd0394437b"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/GenotypeFrequency-header.csv",
+      "name": "GenotypeFrequency-header.csv",
+      "contentUrl": "biocypher-out/GenotypeFrequency-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "4129805d9055ec2e51773d6be435ff637d00ab8bb9ae4e8b3cadf65bb3fbcd1b"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/GenotypeFrequency-part000.csv",
+      "name": "GenotypeFrequency-part000.csv",
+      "contentUrl": "biocypher-out/GenotypeFrequency-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "027a33d2f66d015713f49ebc907697a0212256be8c1afc205f7e85ebdbddff90"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/GenotypeFrequencyInPopulation-header.csv",
+      "name": "GenotypeFrequencyInPopulation-header.csv",
+      "contentUrl": "biocypher-out/GenotypeFrequencyInPopulation-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/GenotypeFrequencyInPopulation-part000.csv",
+      "name": "GenotypeFrequencyInPopulation-part000.csv",
+      "contentUrl": "biocypher-out/GenotypeFrequencyInPopulation-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "82ee0109fbcd7628dd69c70bed1803678d20a1fe2bf48048a0acc6ac87437848"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/PopulationOfIndividualOrganisms-header.csv",
+      "name": "PopulationOfIndividualOrganisms-header.csv",
+      "contentUrl": "biocypher-out/PopulationOfIndividualOrganisms-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "5e5b9a9c44d56f09d3c21aa3eee0f9238d9aa273b10e6358d3efd44d6f66bb89"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/PopulationOfIndividualOrganisms-part000.csv",
+      "name": "PopulationOfIndividualOrganisms-part000.csv",
+      "contentUrl": "biocypher-out/PopulationOfIndividualOrganisms-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "e2f5dbf1631996476e819d37ccc518594186b0bc115753cacf056c2a13472bb6"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/SequenceVariant-header.csv",
+      "name": "SequenceVariant-header.csv",
+      "contentUrl": "biocypher-out/SequenceVariant-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "9312e6e2906de480aad63c909441bc8be25450b2d6882a431a957e49573ce2b2"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/SequenceVariant-part000.csv",
+      "name": "SequenceVariant-part000.csv",
+      "contentUrl": "biocypher-out/SequenceVariant-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "bd9e4452f2332de177c84d741d6d33cd14bc83e5897f6995e695ed7ce27bfb11"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/VariantCombinationFrequency-header.csv",
+      "name": "VariantCombinationFrequency-header.csv",
+      "contentUrl": "biocypher-out/VariantCombinationFrequency-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "cd8f6cbd47f419da95677de9c65ba3747dab18364817428b0ed9d1ae4a8cff48"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/VariantCombinationFrequency-part000.csv",
+      "name": "VariantCombinationFrequency-part000.csv",
+      "contentUrl": "biocypher-out/VariantCombinationFrequency-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "c16ec4074e33930d90f0de2ce571bf83c20ec84350b2c8f23033a714a6f5c666"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/VariantHasGenotypeFrequency-header.csv",
+      "name": "VariantHasGenotypeFrequency-header.csv",
+      "contentUrl": "biocypher-out/VariantHasGenotypeFrequency-header.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "biocypher-out/VariantHasGenotypeFrequency-part000.csv",
+      "name": "VariantHasGenotypeFrequency-part000.csv",
+      "contentUrl": "biocypher-out/VariantHasGenotypeFrequency-part000.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "ed21e345402117787201f590cd29235a14d327eaef4dc34ee1328adf380a3eb4"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "genotype_frequencies",
+      "name": "genotype_frequencies",
+      "description": "Per-variant genotype prevalence. Aggregate ALL values use observed sample counts; other populations use Hardy-Weinberg estimates.",
+      "key": {
+        "@id": "genotype_frequencies/id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "genotype_frequencies/id",
+          "name": "id",
+          "description": "id",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/genotype_frequencies.csv"
+            },
+            "extract": {
+              "column": "id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "genotype_frequencies/rsid",
+          "name": "rsid",
+          "description": "rsid",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/genotype_frequencies.csv"
+            },
+            "extract": {
+              "column": "rsid"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "genotype_frequencies/population_code",
+          "name": "population_code",
+          "description": "population code",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/genotype_frequencies.csv"
+            },
+            "extract": {
+              "column": "population_code"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "genotype_frequencies/genotype",
+          "name": "genotype",
+          "description": "genotype",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/genotype_frequencies.csv"
+            },
+            "extract": {
+              "column": "genotype"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "genotype_frequencies/zygosity",
+          "name": "zygosity",
+          "description": "zygosity",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/genotype_frequencies.csv"
+            },
+            "extract": {
+              "column": "zygosity"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "genotype_frequencies/prevalence_percent",
+          "name": "prevalence_percent",
+          "description": "prevalence percent",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/genotype_frequencies.csv"
+            },
+            "extract": {
+              "column": "prevalence_percent"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "genotype_frequencies/frequency",
+          "name": "frequency",
+          "description": "frequency",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/genotype_frequencies.csv"
+            },
+            "extract": {
+              "column": "frequency"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "genotype_frequencies/estimation_method",
+          "name": "estimation_method",
+          "description": "estimation method",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/genotype_frequencies.csv"
+            },
+            "extract": {
+              "column": "estimation_method"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "variant_combinations",
+      "name": "variant_combinations",
+      "description": "Joint diplotype estimates calculated by multiplying per-variant frequencies under independence; these are not observed joint counts.",
+      "key": {
+        "@id": "variant_combinations/id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "variant_combinations/id",
+          "name": "id",
+          "description": "id",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/variant_combinations.csv"
+            },
+            "extract": {
+              "column": "id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "variant_combinations/population_code",
+          "name": "population_code",
+          "description": "population code",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/variant_combinations.csv"
+            },
+            "extract": {
+              "column": "population_code"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "variant_combinations/combination",
+          "name": "combination",
+          "description": "combination",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/variant_combinations.csv"
+            },
+            "extract": {
+              "column": "combination"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "variant_combinations/prevalence_percent",
+          "name": "prevalence_percent",
+          "description": "prevalence percent",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/variant_combinations.csv"
+            },
+            "extract": {
+              "column": "prevalence_percent"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "variant_combinations/frequency",
+          "name": "frequency",
+          "description": "frequency",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "data/variant_combinations.csv"
+            },
+            "extract": {
+              "column": "frequency"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "variant_combinations/estimation_method",
+          "name": "estimation_method",
+          "description": "estimation method",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/variant_combinations.csv"
+            },
+            "extract": {
+              "column": "estimation_method"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "variant_combinations/note",
+          "name": "note",
+          "description": "note",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "data/variant_combinations.csv"
+            },
+            "extract": {
+              "column": "note"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

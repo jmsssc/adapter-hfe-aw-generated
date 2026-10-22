@@ -1,0 +1,123 @@
+# Schema Configuration for hfe-variant-prevalence
+#
+# Models the HFE gene, its variants (rs1800562, rs1799945), the 1000 Genomes
+# populations, and prevalence leaf nodes used for leaf-node filtering
+# (e.g. "prevalence_percent > 20").
+
+# ---------------------------------------------------------------------------
+# NODE TYPES
+# ---------------------------------------------------------------------------
+
+# HFE gene
+gene:
+  represented_as: node
+  input_label: gene
+  properties:
+    name: string
+    symbol: string
+    chromosome: string
+    start_position: integer
+    end_position: integer
+
+# rs1800562 / rs1799945 (Biolink: SequenceVariant)
+sequence variant:
+  represented_as: node
+  input_label: sequence variant
+  properties:
+    rsid: string
+    consequence: string
+    reference_allele: string
+    alternate_allele: string
+    ancestral_allele: string
+    minor_allele: string
+    maf: float
+    allele_string: string
+    chromosome: string
+    position: integer
+    assembly: string
+
+# 1000 Genomes populations (Biolink: PopulationOfIndividualOrganisms)
+population of individual organisms:
+  represented_as: node
+  input_label: population of individual organisms
+  properties:
+    name: string
+    population_code: string
+    is_aggregate: boolean
+    source: string
+
+# Leaf node: per-variant genotype (zygosity) prevalence in a population.
+# This is the "% if alone" for a single variant.
+genotype frequency:
+  is_a: entity
+  represented_as: node
+  input_label: genotype frequency
+  properties:
+    rsid: string
+    population_code: string
+    genotype: string
+    zygosity: string
+    alleles: string[]
+    prevalence_percent: float
+    frequency: float
+    estimation_method: string
+    genotype_count: integer
+    sample_size: integer
+
+# Leaf node: joint diplotype prevalence across BOTH variants in a population.
+# This is the "% for each combo" (estimated under independence).
+variant combination frequency:
+  is_a: entity
+  represented_as: node
+  input_label: variant combination frequency
+  properties:
+    population_code: string
+    combination: string
+    prevalence_percent: float
+    frequency: float
+    estimation_method: string
+    note: string
+
+# ---------------------------------------------------------------------------
+# EDGE TYPES
+# ---------------------------------------------------------------------------
+
+# gene -> sequence variant
+gene has variant:
+  is_a: association
+  represented_as: edge
+  input_label: has_variant
+  source: gene
+  target: sequence variant
+
+# sequence variant -> genotype frequency
+variant has genotype frequency:
+  is_a: association
+  represented_as: edge
+  input_label: has_genotype_frequency
+  source: sequence variant
+  target: genotype frequency
+
+# genotype frequency -> population
+genotype frequency in population:
+  is_a: association
+  represented_as: edge
+  input_label: genotype_frequency_in_population
+  source: genotype frequency
+  target: population of individual organisms
+
+# variant combination frequency -> population
+combination in population:
+  is_a: association
+  represented_as: edge
+  input_label: combination_in_population
+  source: variant combination frequency
+  target: population of individual organisms
+
+# variant combination frequency -> sequence variant
+combination involves variant:
+  is_a: association
+  represented_as: edge
+  input_label: combination_involves_variant
+  source: variant combination frequency
+  target: sequence variant

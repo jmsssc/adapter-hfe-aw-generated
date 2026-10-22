@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hfe_variant_prevalence"
+version = "0.1.0"
+description = "BioCypher adapter for HFE variants rs1800562/rs1799945 population prevalence (1000 Genomes via Ensembl REST)"
+readme = "README.md"
+authors = [
+    {name = "BioCypher User", email = "user@example.com"},
+]
+requires-python = ">=3.11"
+dependencies = [
+    "biocypher>=0.16.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "requests>=2.32.0",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+[project.optional-dependencies]
+croissant = ["mlcroissant==1.0.22"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "black",
+    "isort",
+    "mypy",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/biocypher-user/hfe_variant_prevalence"
+"Bug Tracker" = "https://github.com/biocypher-user/hfe_variant_prevalence/issues"
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

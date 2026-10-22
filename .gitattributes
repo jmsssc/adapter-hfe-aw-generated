@@ -1,0 +1,3 @@
+# Preserve the bytes used by Croissant checksums across platforms.
+data/* -text
+biocypher-out/*.csv -text

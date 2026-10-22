@@ -1,0 +1,88 @@
+{
+  "exported_at": "2026-10-22T06:59:48.391651+00:00",
+  "derived_from": "Standalone FSHR adapter example",
+  "original_source_commit": "1867928fb4fa3aca41ae19aa64d1baf322b5ebff",
+  "gene": "HFE",
+  "variants": [
+    "rs1800562",
+    "rs1799945"
+  ],
+  "data_downloaded_on": "2026-10-22",
+  "source_urls": [
+    "https://rest.ensembl.org/lookup/symbol/homo_sapiens/HFE?content-type=application/json",
+    "https://rest.ensembl.org/variation/human/rs1800562?pops=1&genotypes=1&content-type=application/json",
+    "https://rest.ensembl.org/variation/human/rs1799945?pops=1&genotypes=1&content-type=application/json"
+  ],
+  "node_counts": {
+    "gene": 1,
+    "sequence variant": 2,
+    "population of individual organisms": 31,
+    "genotype frequency": 147,
+    "variant combination frequency": 162
+  },
+  "edge_counts": {
+    "has_variant": 2,
+    "has_genotype_frequency": 147,
+    "genotype_frequency_in_population": 147,
+    "combination_in_population": 162,
+    "combination_involves_variant": 324
+  },
+  "graph_export": "Generated from adapter tuples using the original Neo4j header schema, semicolon delimiter, and single quote character.",
+  "verification": [
+    "14 offline adapter tests passed",
+    "Croissant record sets loaded with mlcroissant 1.0.22",
+    "Gene identity, observed genotype counts, frequency totals, graph references, CSV fields, and checksums verified",
+    "Ruff checks passed"
+  ],
+  "publication_metadata_todo": [
+    "license",
+    "citation",
+    "datePublished",
+    "author and GitHub repository details"
+  ],
+  "sha256": {
+    ".dockerignore": "73d9128bb65dce9e0a9a52dbf1d51214b34d5c5da15e5df800528800d8bbe777",
+    ".gitattributes": "7b15b9585d05819503d4ab83ac1d6ad13216e98ef539c092d436e24d3c2a54a7",
+    ".gitignore": "ff923f0ce30ca6c695796eae34dd2506858681be3148258134eafa40c4e09720",
+    "Dockerfile": "6f15dfa59a89113b03bb0b44359287852184149808104ff45d526eead826d705",
+    "PUBLISHING.md": "92ab11d1ee84d3a85b8d330af0097289b7f0370964ff075a681913a6dd9103e1",
+    "README.md": "a608dce868cd6534ce347721c79b347320dc70f8a7b58fec6d69bcba9bad97a6",
+    "biocypher-out/CombinationInPopulation-header.csv": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c",
+    "biocypher-out/CombinationInPopulation-part000.csv": "52455d41b400dc306c79bd34e11fa4c3a12382746d10c351e41504202c9e6238",
+    "biocypher-out/CombinationInvolvesVariant-header.csv": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c",
+    "biocypher-out/CombinationInvolvesVariant-part000.csv": "b35ad64b14469aa493919295d71935bf4ce5f90fef53e3aceed841aef7fac2c6",
+    "biocypher-out/Gene-header.csv": "deaaabe090ffcbb47bc6765598770c83585023ce394ccc4fabec95d3e5b9da6d",
+    "biocypher-out/Gene-part000.csv": "ea7a773c1d5cd819a4d712096ac009027d0837a8ceff9506e18f718a04584647",
+    "biocypher-out/GeneHasVariant-header.csv": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c",
+    "biocypher-out/GeneHasVariant-part000.csv": "042018cb2c54ac0b706c075ba2efb804c87ada4add859aac59478fdd0394437b",
+    "biocypher-out/GenotypeFrequency-header.csv": "4129805d9055ec2e51773d6be435ff637d00ab8bb9ae4e8b3cadf65bb3fbcd1b",
+    "biocypher-out/GenotypeFrequency-part000.csv": "027a33d2f66d015713f49ebc907697a0212256be8c1afc205f7e85ebdbddff90",
+    "biocypher-out/GenotypeFrequencyInPopulation-header.csv": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c",
+    "biocypher-out/GenotypeFrequencyInPopulation-part000.csv": "82ee0109fbcd7628dd69c70bed1803678d20a1fe2bf48048a0acc6ac87437848",
+    "biocypher-out/PopulationOfIndividualOrganisms-header.csv": "5e5b9a9c44d56f09d3c21aa3eee0f9238d9aa273b10e6358d3efd44d6f66bb89",
+    "biocypher-out/PopulationOfIndividualOrganisms-part000.csv": "e2f5dbf1631996476e819d37ccc518594186b0bc115753cacf056c2a13472bb6",
+    "biocypher-out/SequenceVariant-header.csv": "9312e6e2906de480aad63c909441bc8be25450b2d6882a431a957e49573ce2b2",
+    "biocypher-out/SequenceVariant-part000.csv": "bd9e4452f2332de177c84d741d6d33cd14bc83e5897f6995e695ed7ce27bfb11",
+    "biocypher-out/VariantCombinationFrequency-header.csv": "cd8f6cbd47f419da95677de9c65ba3747dab18364817428b0ed9d1ae4a8cff48",
+    "biocypher-out/VariantCombinationFrequency-part000.csv": "c16ec4074e33930d90f0de2ce571bf83c20ec84350b2c8f23033a714a6f5c666",
+    "biocypher-out/VariantHasGenotypeFrequency-header.csv": "a68e878f58a9cf7273d933ee085d68184e2ee1ba27fafa5c0714d63a9ee3228c",
+    "biocypher-out/VariantHasGenotypeFrequency-part000.csv": "ed21e345402117787201f590cd29235a14d327eaef4dc34ee1328adf380a3eb4",
+    "config/biocypher_config.yaml": "d9d4da35b06fe1163e8a22009699672150c5b6964c544471c3af7e8af01cf496",
+    "config/schema_config.yaml": "8596dfa5614194c5dfd6aefc054933f70454a9f94f8b5f2c2d5ee0862e078ab0",
+    "create_knowledge_graph.py": "1aff2787c5e346c0a991781ea1558518ff2e0711b1bc6bf062aa7dd90b2a02fc",
+    "croissant.json": "288ae24619b526c7ec7e72921586339d629ef8b622ab7d8ff22b469f6edeb548",
+    "data/ensembl_HFE_gene.json": "9976b4374703ae3bf1e0b7dfad284df4d48dcede9a4cdb5217a8ef2512877b78",
+    "data/ensembl_rs1799945.json": "4f638163af2d18a480956c9b765147615e1b62a0e26d8a0a6ecdaa340cca0e3c",
+    "data/ensembl_rs1800562.json": "17e99e21a7d9ece1b4053ed1a1c5abbc751bd10465f5e29511e2b70f62204d3d",
+    "data/genotype_frequencies.csv": "5fed1dd5f7fff7bed19fa9fb001e25570398887dbbd1848a038bc6f1111164d6",
+    "data/variant_combinations.csv": "2b404790b854547964200b3ed9c0f3128fc185d43616625790fca9e22932b3fe",
+    "docker-compose.yml": "1d2ea1fda756a4fb432b6f79ae5be6fcb0ce3f094fda9f0c25b7fff148f718d5",
+    "export_croissant.py": "0ef3cae68b9fb5e10cc3f4a8529583adedce67bc92fb061593ccbefbd4cfcaac",
+    "pyproject.toml": "159b24f62286e145060fc9daf2f929b813f3141048ab6eaa63fdb71414d8a982",
+    "src/hfe_variant_prevalence/__init__.py": "d0fee79d0b452cc3106f0159e055dfba4bde493b972c1ebba260d147f1955356",
+    "src/hfe_variant_prevalence/adapters/__init__.py": "378af796ce5619a7c778bcb1de7a5c3b8e23b0ca978a0ca3d9dc4e1a2cf7a2e3",
+    "src/hfe_variant_prevalence/adapters/hfe_variant_adapter.py": "df2b88e3f28428d842941f5fe69b62ff8fdae37dca872060d1dbba0139b5b26f",
+    "tests/__init__.py": "8bbc904883eaff8529203d9c77679e22e1ba40075d8c0b22be8a982469306dc5",
+    "tests/test_hfe_variant_adapter.py": "c75dbe0b028be05b9a953b179cff4ba26ee8ea1fc34a5ba6ed461353fd19f6b4"
+  }
+}
